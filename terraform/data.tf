@@ -9,6 +9,8 @@ data "terraform_remote_state" "deploy" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
 data "aws_vpc" "this" {
   id = data.terraform_remote_state.deploy.outputs.vpc_id
 }
