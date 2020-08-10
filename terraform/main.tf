@@ -6,7 +6,10 @@ locals {
   cluster_name = "itse-apps-admin-1"
 
   cluster_features = {
-    "aws_calico" = true
+    "prometheus"         = true
+    "flux"               = true
+    "flux_helm_operator" = true
+    "aws_calico"         = true
   }
 
   node_groups = {
@@ -28,6 +31,12 @@ locals {
       }
     }
   }
+
+  flux_settings = {
+    "git.url"    = "git@github.com:mozilla-it/itse-apps-admin-1-infra"
+    "git.path"   = "k8s"
+    "git.branch" = "main"
+  }
 }
 
 module "eks" {
@@ -37,6 +46,7 @@ module "eks" {
   vpc_id           = data.terraform_remote_state.deploy.outputs.vpc_id
   cluster_subnets  = data.terraform_remote_state.deploy.outputs.public_subnets
   cluster_features = local.cluster_features
+  flux_settings    = local.flux_settings
   node_groups      = local.node_groups
   admin_users_arn  = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/maws-admin"]
 }
