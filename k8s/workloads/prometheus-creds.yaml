@@ -1,0 +1,9 @@
+apiVersion: kubernetes-client.io/v1
+kind: ExternalSecret
+metadata:
+  name: prometheus-creds
+  namespace: monitoring
+spec:
+  backendType: secretsManager
+  dataFrom:
+    - /admin/prometheus-creds
