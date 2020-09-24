@@ -47,7 +47,7 @@ locals {
     password_file: '/secrets/auth.txt'
   static_configs:
     - targets:
-        - 'prom.itse-apps-stage-2.k8s.mozit.cloud:9090'
+        - 'prom.itse-apps-stage-2.itsre-apps.mozit.cloud'
 EOF
 
   prometheus_mount_config = <<EOF
