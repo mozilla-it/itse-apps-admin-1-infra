@@ -42,7 +42,7 @@ locals {
 module "eks" {
   source           = "github.com/mozilla-it/terraform-modules//aws/eks?ref=master"
   cluster_name     = local.cluster_name
-  cluster_version  = "1.17"
+  cluster_version  = "1.18"
   vpc_id           = data.terraform_remote_state.deploy.outputs.vpc_id
   cluster_subnets  = data.terraform_remote_state.deploy.outputs.public_subnets
   cluster_features = local.cluster_features
