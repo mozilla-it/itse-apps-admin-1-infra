@@ -1,7 +1,7 @@
-variable "region" {
-  default = "us-west-2"
-}
+# variable "region" {
+#   default = "us-west-2"
+# }
 
-variable "environment" {
-  default = "admin"
-}
+# variable "environment" {
+#   default = "admin"
+# }
